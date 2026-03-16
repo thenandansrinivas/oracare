@@ -1,0 +1,29 @@
+{
+	"name": "oracare",
+	"type": "module",
+	"private": true,
+	"workspaces": [
+		"server",
+		"web"
+	],
+	"scripts": {
+		"server:dev": "bun --filter server dev",
+		"server:build": "bun --filter server build",
+		"server:start": "bun --filter server start",
+		"web:dev": "bun --filter web dev",
+		"web:build": "bun --filter web build",
+		"web:preview": "bun --filter web preview",
+		"check": "bunx --bun @biomejs/biome check",
+		"format": "bunx --bun @biomejs/biome check --write --unsafe"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.7",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"zod": "^4.3.6"
+	}
+}
