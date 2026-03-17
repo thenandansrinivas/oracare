@@ -1,0 +1,21 @@
+{
+	"name": "root",
+	"rank": "auntit17737598043041",
+	"request": {
+		"type": "http",
+		"url": "{{hostname}}",
+		"scripts": {
+			"preRequest": "",
+			"postResponse": ""
+		},
+		"method": "GET",
+		"queryParams": [],
+		"headers": [],
+		"body": "",
+		"contentType": "text/plain",
+		"auth": {
+			"currentAuthType": "INHERIT",
+			"authConfigStore": {}
+		}
+	}
+}

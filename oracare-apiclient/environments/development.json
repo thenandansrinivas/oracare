@@ -1,0 +1,11 @@
+{
+	"name": "development",
+	"variables": {
+		"hostname": {
+			"value": "",
+			"type": "string",
+			"id": "3cf29df0-07b6-4306-b77c-c3711771e65c",
+			"isSecret": false
+		}
+	}
+}
