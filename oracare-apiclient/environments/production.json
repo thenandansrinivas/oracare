@@ -1,0 +1,11 @@
+{
+	"name": "production",
+	"variables": {
+		"hostname": {
+			"value": "",
+			"type": "string",
+			"id": "ff4fb350-7cd4-47e6-9e9c-1d7cd9e8b008",
+			"isSecret": false
+		}
+	}
+}
