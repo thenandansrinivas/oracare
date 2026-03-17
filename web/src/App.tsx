@@ -1,5 +1,14 @@
+import { useEffect, useState } from 'react'
+import { getMessage } from './utils/msg'
+
 const App = () => {
-	return <div className='m-5 p-10 text-3xl'>{import.meta.env.VITE_SERVER_PORT}</div>
+	const [msg, setMsg] = useState('')
+
+	useEffect(() => {
+		getMessage().then(setMsg)
+	}, [])
+
+	return <div className='m-5 p-10 font-semibold text-3xl text-amber-300'>{msg}</div>
 }
 
 export default App

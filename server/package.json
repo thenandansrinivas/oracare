@@ -2,12 +2,14 @@
 	"name": "server",
 	"version": "1.0.50",
 	"scripts": {
-		"start": "bun run dist/index.js",
+		"start": "NODE_ENV=pro bun --env-file=../.env run dist/index.js",
 		"build": "tsc",
-		"dev": "bun --env-file=../.env run --watch src/index.ts"
+		"dev": "NODE_ENV=dev bun --env-file=../.env.dev run --watch src/index.ts"
 	},
 	"dependencies": {
-		"elysia": "latest"
+		"@elysiajs/cors": "^1.4.1",
+		"elysia": "latest",
+		"logixlysia": "^6.2.2"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
