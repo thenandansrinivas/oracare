@@ -1,5 +1,13 @@
-import { Elysia } from 'elysia'
+import cors from '@elysiajs/cors'
+import { app } from './app'
+import { env } from './config/env'
 
-const app = new Elysia().get('/', () => 'Hello Elysia').listen(3000)
+const server = app.use(
+	cors({
+		origin: env.TRUSTED_ORIGIN
+	})
+)
 
-console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`)
+export type App = typeof server
+
+server.listen(env.PORT)
