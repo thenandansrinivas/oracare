@@ -1,8 +1,25 @@
 import Elysia from 'elysia'
 import { logger } from './lib/logger'
+import { globalRateLimiter } from './lib/ratelimiter'
 import router from './routers/router'
 
 export const app = new Elysia()
 	.use(logger)
+	.use(globalRateLimiter)
+	// Handle the 429 inside Elysia's lifecycle so logger catches it
+	.onAfterHandle(({ set }) => {
+		if (set.status === 429) {
+			set.headers['Content-Type'] = 'application/json'
+			return {
+				success: false,
+				message: 'Too many requests. Please try again later.'
+			}
+		}
+	})
 	.use(router)
-	.get('/', () => 'Hello Elysia')
+	.get('/live', () => ({
+		status: 'ok',
+		uptime: process.uptime(),
+		timestamp: new Date().toISOString(),
+		local: new Date().toLocaleString('en-IN')
+	}))
