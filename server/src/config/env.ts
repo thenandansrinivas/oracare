@@ -14,7 +14,10 @@ const envSchema = z.object({
 		.string()
 		.default('/live,/health')
 		.transform(val => val.split(',').map(s => s.trim())),
-	RATE_LIMIT_AUTH_IGNORE: z.string().transform(val => val.split(',').map(s => s.trim()))
+	RATE_LIMIT_AUTH_IGNORE: z
+		.string()
+		.default('')
+		.transform(val => (val ? val.split(',').map(s => s.trim()) : []))
 })
 
 export const isDev = process.env.NODE_ENV === 'dev'

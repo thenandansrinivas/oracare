@@ -17,9 +17,12 @@ export const app = new Elysia()
 		}
 	})
 	.use(router)
-	.get('/live', () => ({
-		status: 'ok',
-		uptime: process.uptime(),
-		timestamp: new Date().toISOString(),
-		local: new Date().toLocaleString('en-IN')
-	}))
+	.get('/live', () => {
+		const now = new Date()
+		return {
+			status: 'ok',
+			uptime: process.uptime(),
+			timestamp: now.toISOString(),
+			localTime: now.toLocaleString('en-IN')
+		}
+	})
